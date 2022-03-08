@@ -1,0 +1,34 @@
+extends layouts/loginPage-layout.pug 
+block eyeCandyLogin
+    .loginContainer 
+        hi Initiation 
+        form#registerForm(action="", method="post", onsubmit="event.preventDefault(); validateForm();")
+            p.errorMessage #{errorMessage}
+
+            input(type="text", name="FirstName", placeholder="Preferred First Name", value=FirstName,required="")
+            input(type="text", name="LastName", placeholder="Last Name", value=LastName,required="")
+            input(type="text", name="UserName", placeholder="Mob Username", value=UserName,required="")
+            input(type="email", name="Email", placeholder="Email", value=Email, required="")
+            input#password(type="password", name="Password", placeholder="Don't Forget Your Password", required="")
+            input#passwordConfirm(type="password", name="PasswordConfirm", placeholder="Type It Again For Good Measure", required="")
+            input(type="submit", value="Join")
+
+
+        a(href="/login", class="p1") Ah so you've already been initiated? Login here.
+
+    script. 
+        var passwordField = document.getElementById("password")    
+        var passwordFieldConfirm = document.getElementById("passwordConfirm")
+        var form = document.getElementById("registerForm") 
+
+        function validateForm(){ 
+            //This will do the validation that the user has properly put in their matching passwords into both fields before having it sent through.
+            if(passwordField.value != passwordFieldConfirm.value){
+                alert("Slow Down! The passwords don't match")
+            }
+            else {
+            form.submit();
+            }
+        }          
+
+         

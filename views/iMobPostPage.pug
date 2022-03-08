@@ -1,0 +1,11 @@
+extends layouts/base-layout.pug 
+
+block eyeCandy
+    script.
+        var postId = '!{postId}';
+    .postsContainer
+
+    +modalsFunctionalty(userLoggedIn)
+
+block scripts 
+    script(src="/Frontend/iMobPostPage.js") 

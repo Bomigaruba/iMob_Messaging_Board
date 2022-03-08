@@ -1,0 +1,23 @@
+extends layouts/base-layout.pug 
+
+block eyeCandy
+    if !iMobMemberProfile
+        span.pageNotFoundErrorMessage lol, iMobMember Not Found
+        
+
+    else
+        script.
+            var iMobMemberProfileId = '!{iMobMemberProfile._id}';
+            var selectedTab = '!{selectedTab}';
+        
+      
+        .tabsContainer 
+            +createTab("Close Buds", `/iMobProfilePage/${iMobMemberProfile.UserName}/linked`, selectedTab != "confirmedLinked")
+            +createTab("Community", `/iMobProfilePage/${iMobMemberProfile.UserName}/confirmedLinked`, selectedTab == "confirmedLinked")          
+
+
+        .resultsContainer
+
+
+block scripts 
+    script(src="/Frontend/communityAndFriends.js") 

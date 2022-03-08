@@ -1,0 +1,159 @@
+mixin createPostForm(userLoggedIn)
+    .postFormContainer     
+        .userImageContainer 
+            img(src=userLoggedIn.MugShotPic)
+        .textareaContainer 
+            textarea#postTextarea(placeholder="Free Speech?")
+            .buttonsContainer
+                button#submitPostButton(disabled="") Post
+                
+mixin createCommentsModal(userLoggedIn)
+    #commentModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='commentModalLabel' aria-hidden='true')
+        .modal-dialog(role='document')
+            .modal-content
+                .modal-header
+                    h5#commentModalLabel.modal-title Comment
+                    button.close(type='button' data-dismiss='modal' aria-label='Close')
+                    span(aria-hidden='true') &times;
+                .modal-body
+                    #originalPostContainer
+                    .postFormContainer     
+                        .userImageContainer 
+                            img(src=userLoggedIn.MugShotPic)
+                        .textareaContainer 
+                            textarea#commentTextarea(placeholder="Free Speech?")
+                .modal-footer
+                    button#exitButton.btn.btn-secondary(type='button' data-dismiss='modal') Exit
+                    button#submitCommentButton.btn.btn-primary(type='button', disabled="") Full Send
+
+
+mixin generateDeletePostModal()
+    #deletePostModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='deletePostModalLabel' aria-hidden='true')
+        .modal-dialog(role='document')
+            .modal-content
+                .modal-header
+                    h5#deletePostModalLabel.modal-title Terminate this post?
+                    button.close(type='button' data-dismiss='modal' aria-label='Close')
+                    span(aria-hidden='true') &times;
+                .modal-body
+                    p You can delete this....(Caught in 4K📸 tho)
+                .modal-footer
+                    button#exitButton.btn.btn-secondary(type='button' data-dismiss='modal') Exit
+                    button#deleteButton.btn.btn-primary(type='button') Terminate                    
+
+mixin modalsFunctionalty(userLoggedIn)
+    +generateDeletePostModal()
+    +createCommentsModal(userLoggedIn)
+    +callCapOnUserPostModal()
+
+
+mixin joinCommunityButton(user, LinkedUp)
+    - text = LinkedUp ? "Linked" : "Join"
+    - buttonClass = LinkedUp ? "followButton linked" : "followButton"
+    button(class=buttonClass, data-user=user._id) #{text}
+
+mixin createTab(name, href, isSelected)
+    -classes = isSelected ? "tab active" : "tab"
+    a(href=href, class=classes)
+        span #{name}
+
+
+mixin generateImageUploadModal()
+    #imageUploadModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='imageUploadModalLabel' aria-hidden='true')
+        .modal-dialog(role='document')
+            .modal-content
+                .modal-header
+                    h5#imageUploadModalLabel.modal-title Changing profile skin
+                    button.close(type='button' data-dismiss='modal' aria-label='Close')
+                    span(aria-hidden='true') &times;
+                .modal-body
+                    input#filePhoto(type="file", name="filePhoto")
+                    p (Caught in 1080p📸)
+                    .imagePreviewContainer 
+                        img#imagePreview
+                .modal-footer
+                    button#exitButton.btn.btn-secondary(type='button' data-dismiss='modal') Cancel
+                    button#imageUploadButton.btn.btn-primary(type='button') Confirm  
+
+mixin generateCoverImageUploadModal()
+    #coverImageUploadModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='coverImageUploadModalLabel' aria-hidden='true')
+        .modal-dialog(role='document')
+            .modal-content
+                .modal-header
+                    h5#coverImageUploadModalLabel.modal-title Changing Backdrop skin
+                    button.close(type='button' data-dismiss='modal' aria-label='Close')
+                    span(aria-hidden='true') &times;
+                .modal-body
+                    input#coverPhoto(type="file", name="coverPhoto")
+                    p (Caught in 24k Ultra📸)
+                    .imagePreviewContainer 
+                        img#coverPreview
+                .modal-footer
+                    button#exitButton.btn.btn-secondary(type='button' data-dismiss='modal') Cancel
+                    button#coverImageUploadButton.btn.btn-primary(type='button') Confirm  
+
+
+mixin callCapOnUserPostModal()
+    #stopTheCapModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='stopTheCapModalLabel' aria-hidden='true')
+        .modal-dialog(role='document')
+            .modal-content
+                .modal-header
+                    h5#stopTheCapModalLabel.modal-title Are you calling CAP on this post?
+                    button.close(type='button' data-dismiss='modal' aria-label='Close')
+                    span(aria-hidden='true') &times;
+                .modal-body
+                    p This is your way of fact checking what those in your community put on the internet.
+                .modal-footer
+                    button#exitButton.btn.btn-secondary(type='button' data-dismiss='modal') Cancel
+                    button#stopTheCapButton.btn.btn-primary(type='button') Call CAP                     
+
+mixin retractCapClaimOnUserPostModal()
+    #retractCapClaim.modal.fade(tabindex='-1' role='dialog' aria-labelledby='retractCapClaimLabel' aria-hidden='true')
+        .modal-dialog(role='document')
+            .modal-content
+                .modal-header
+                    h5#retractCapClaimLabel.modal-title Retract Cap Claim?
+                    button.close(type='button' data-dismiss='modal' aria-label='Close')
+                    span(aria-hidden='true') &times;
+                .modal-body
+                    p Claim you retracted statement receipt lol.
+                .modal-footer
+                    button#exitButton.btn.btn-secondary(type='button' data-dismiss='modal') Cancel
+                    button#retractCapClaimButton.btn.btn-primary(type='button') Retract                       
+
+mixin createChatImage(ChatLog, userLoggedIn)
+    if(!ChatLog)
+        return 
+
+    - var i = 0 
+    - var maxImagesDisplayed = 2
+    - var leftoverusers = ChatLog.iMobMembers.length - maxImagesDisplayed
+    - leftoverusers--
+
+    .chatImagesContainer
+        if leftoverusers > 0
+            .userCount  
+                span +#{leftoverusers}   
+
+        each user in ChatLog.iMobMembers  
+            if  ChatLog.iMobMembers.length !=1 && user._id == userLoggedIn._id 
+                - continue
+            else if i >= maxImagesDisplayed
+                - break
+
+            img(src=user.MugShotPic, alt="mugShot", title=user.FirstName)
+            - i++
+
+mixin chatNameModal(chat)
+    #changeChatNameModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='changeChatNameModalLabel' aria-hidden='true')
+        .modal-dialog(role='document')
+            .modal-content
+                .modal-header
+                    h5#changeChatNameModalLabel.modal-title Changing Chat Name?
+                    button.close(type='button' data-dismiss='modal' aria-label='Close')
+                    span(aria-hidden='true') &times;
+                .modal-body
+                    input#chatNameTextbox(type="text", placeholder= "Change as you wish..", value=chat)
+                .modal-footer
+                    button#exitButton.btn.btn-secondary(type='button' data-dismiss='modal') Cancel
+                    button#changeChatNameButton.btn.btn-primary(type='button') Confirm    

@@ -1,0 +1,30 @@
+extends layouts/base-layout.pug 
+
+block eyeCandy
+    if errorMessage     
+        span.errorMessage #{errorMessage}
+    else
+        script.  
+            var DMid = '!{DM._id}';
+
+        .DMPageContainer
+            .chartTitleContainer   
+                +createChatImage(DM, userLoggedIn) 
+                span#DMName(data-toggle="modal", data-target="#changeChatNameModal")
+            
+            .mainContentContainer     
+                .loadingCarltonContainer(style="visibility: visible")
+                    img(src="/images/Loading.Gif", alt="loading carleton gif", style="visibility: visible")                         
+                .chatContainer(style="visibility: hidden", data-room=DM._id)
+                    ul.directMessages
+                    .typingDots  
+                        img(src="/images/typing.Gif", alt="dots")      
+                    .footer 
+                        textarea.inputTextBox(name="messageInput", placeholder="Speak your truth..")
+                        button.sendMessageButton
+                            i.fas.fa-paper-plane
+        +chatNameModal(chat)
+
+
+block scripts 
+    script(src="/Frontend/DMpage.js") 

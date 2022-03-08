@@ -1,0 +1,11 @@
+extends layouts/base-layout.pug 
+
+block eyeCandy
+    .chatRoomContainer  
+        .chatTitleBar 
+            label(for= "userSearchTexbox") To: 
+            #availableUsers
+                input#userSearchTextBox(type="text", name="", placeholder="Search up iMob User to chat with")
+        .resultsContainer 
+        button#slideIntoDMButton(disabled) Slide Into Chat
+

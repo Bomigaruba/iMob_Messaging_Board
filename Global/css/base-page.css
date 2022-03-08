@@ -1,0 +1,805 @@
+:root{
+    --iMobPurple: #2a4ad867;
+    --disabledColor: #c2081765;
+    --buttonHoveringColour:#8698b3;
+    --borderGrey: #c3d0dd;
+    --spacing: 13.42px;
+    --CommentBlue: rgb(8, 57, 219);
+    --Cosign: rgb(78, 226, 98);
+    --blurred: rgb(66, 33, 6);
+    --Cosign_Background: rgba(78, 226, 98,0.1);
+    --Crown:rgb(151, 22, 163);
+    --Crown_Background: rgba(226, 78, 169, 0.1);
+}
+
+html, body{
+    height: 100%;
+    min-height: 100%;
+    background-color: #fff;
+    font-weight: 300;
+    font-family:'Courier New', Courier, monospace;
+    
+}
+
+a {
+    color: inherit;
+    font-family:'Courier New', Courier, monospace;
+}
+
+a:hover{
+    color: inherit;
+    text-decoration: none;
+}
+
+
+nav{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    height: 10%;
+}
+
+nav a {
+    display: flex;
+    padding: 13.42px;
+    font-size: 35px;
+    width: 55px;
+    height: 55px;
+    align-items: center;
+    justify-content: center;  
+    color: rgb(112, 113, 115);   
+    position: relative ;
+}
+
+nav a:hover{
+    background-color: var(--buttonHoveringColour);
+    color: whitesmoke;
+    border-radius: 45%;
+}
+.wrapper{
+    display: flex;
+    flex-direction: column ;
+    height: 100%;
+}
+
+.wrapper > .row{
+    margin: 0;
+    height: 100%;
+}
+
+button{
+    background-color: transparent;
+    border: none;
+    color: rgba(0, 0, 0, 0.2);
+}
+button i, button span {
+    pointer-events: none;
+}
+
+.mainSectionContainer {
+    padding: 0;
+    border-left: 1px solid var(--borderGrey);
+    border-right: 1px solid var(--borderGrey);
+    display: flex;
+    flex-direction: column;
+
+}
+.titleContainer {
+    padding: 0 var(--spacing);
+    align-items: center;
+    justify-content: center; 
+    display: flex;
+    border-bottom: 1px solid var(--borderGrey);
+    color: var(--iMobPurple);
+    flex-shrink: 0;
+}
+
+.titleContainer i{
+    padding: 0;
+    font-size: 35px;
+    width: 55px;
+    height: 55px;
+    align-items: center;
+    justify-content: center; 
+}
+
+#titleArea{ 
+  font-family:'Courier New', Courier, monospace;
+  font-size: 17.38px;
+  font-weight: 800;
+  margin: 0;  
+  flex: 1px;
+  display: flex;
+  justify-content: left;
+  align-items: left;
+}
+
+.postFormContainer {
+    display: flex;
+    padding: var(--spacing);
+    border-bottom: 10px solid rgb(112, 113, 115);
+    flex-shrink: 0;
+}
+
+.modal .postFormContainer {
+    font-family:'Courier New', Courier, monospace;
+    border: none;
+    padding: 0;
+    padding-top: var(--spacing);
+}
+.modal .post {
+    padding:0 0 var(--spacing) 0;
+}
+
+.userImageContainer{
+    width: 50px;
+    height: 50px;
+}
+
+.userImageContainer img{
+    width: 95%;
+    border-radius: 60%;
+    background-color: aqua;
+}
+.textareaContainer {
+    flex: 1;
+    padding-left: var(--spacing);
+}
+
+.textareaContainer textarea {
+    width: 100%;
+    border: none;
+    resize: none;
+    font-size: 16.38px;
+    line-height: 20px;
+    font-family:'Courier New', Courier, monospace;
+   
+}
+
+#submitPostButton {
+    background-color: var(--iMobPurple);
+    color: white;
+    border: none;
+    border-radius: 35.42px;
+    padding: 8px 12px;
+    font-size: 15.38px;
+    font-family: 'Courier New', Courier, monospace;
+}
+#submitCommentButton {
+    background-color: var(--iMobPurple);
+    color: white;
+    border: none;
+    border-radius: 35.42px;
+    padding: 8px 12px;
+    font-size: 15.38px;
+    font-family: 'Courier New', Courier, monospace;
+}
+#exitButton{
+    background-color: var(--blurred);
+    color: white;
+    border: none;
+    border-radius: 35.42px;
+    padding: 8px 12px;
+    font-size: 15.38px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#submitPostButton:disabled {
+    background-color: var(--disabledColor);
+} 
+#submitCommentButton:disabled {
+    background-color: var(--disabledColor);
+} 
+.post {
+    display: flex;
+    flex-direction: column;
+    font-family:'Courier New', Courier, monospace;
+    padding: var(--spacing);
+    cursor: pointer;
+    border-bottom: 1px solid var(--borderGrey);
+    flex-shrink: 0;
+}
+.mainContentContainer {
+    flex: 1;
+    display: flex;
+    overflow-y: hidden;
+}
+.postContentContainer {
+    padding-left: var(--spacing);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.MobUsername,
+.date {
+    color: #9d80ff;
+}
+.displayName{
+    font-weight: bold;
+    font-family:'Courier New', Courier, monospace;
+}
+.postFooter{
+    display: flex;
+    align-items: center;
+}
+.postFooter, .postButtonContainer{
+    flex: 1;
+    display: flex;
+}
+
+.postFooter, .postButtonContainer button{
+    padding: 0 5px;
+}
+ .postButtonContainer button:hover{
+    background-color: var(--disabledColor);
+    color: blueviolet;
+    border-radius: 70%;
+}
+.postFooter .postButtonContainer.green .active{
+    color: var(--Cosign);
+}
+.postButtonContainer.purple button.active{
+    color: var(--Crown);
+}
+.postButtonContainer.blue button.active{
+    color: var(--CommentBlue);
+}
+.postButtonContainer.green button.active:hover{
+    color: var(--Cosign);
+    background-color: var(--Cosign_Background);
+}
+.postButtonContainer.blue button.active:hover{
+    color: var(-- --CommentBlue);
+    background-color: var(-- --CommentBlue);
+}
+
+.postButtonContainer.purple button.active:hover{
+    color: var(--Crown);
+    background-color: var(--Crown_Background);
+}
+.postCosignContainer {
+     padding-left: 35px;
+     font-size: 11px;
+     color: var(--iMobPurple);
+}
+.commentFlag {
+    margin-bottom: 5px;
+}
+.commentFlag a{
+    color: var(--iMobPurple);
+}
+
+.post.bigText .postBody,
+.post.bigText .postFooter{
+    font-size: 21.38px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.postContentContainer .header{
+    display: flex;
+}
+
+.postContentContainer .header .date{
+    flex: 1;
+}
+.pageNotFoundErrorMessage {
+    color: var(--disabledColor);
+    border-radius: 35.42px;
+    padding: var(--spacing);
+    font-size: 15.38px;
+    font-family: 'Courier New Bold', Courier, monospace;
+}
+.coverPhotoSection{
+    height: 182px;
+    background-color: var(--Crown);
+    position: relative;
+}
+.profileHeaderContainer .userImageContainer{
+    height: 130px;
+    width: 125px;
+    margin-left: var(--spacing);
+    position: absolute;
+    top: 10px;
+    
+    display: flex;
+    align-items: center ;
+    justify-content: center;
+}
+.profileHeaderContainer .userImageContainer img{
+    border: 1.14px solid #fff;
+}
+.profileHeaderContainer .profileButtonsContainer {
+    text-align: right;
+    padding: var(--spacing);
+    min-height: 66px;
+}
+.mobProfileButton{
+    border: 1px solid var(--disabledColor);
+    color: var(--iMobPurple);
+    font-weight: bold;
+    padding: 5px 9px;
+    border-radius: 60px;
+    display: inline-block;
+    margin-left: var(--spacing);
+}
+.followButton{
+    border: 1px solid;
+    color: #fff;
+    background-color: red;
+    font-weight: bold;
+    padding: 5px 9px;
+    border-radius: 60px;
+    display: inline-block;
+    margin-left: var(--spacing);
+}
+.followButton.linked{
+    background-color: rgb(0, 187, 115);
+    color: #fff; 
+}
+#followButton:disabled{
+    border: 1px solid var(--disabledColor);
+    color: var(--iMobPurple);
+}
+
+.mobProfileButton:hover{
+    background-color: var(--buttonHoveringColour);
+}
+.followButton.linked:hover{
+    background-color: var(--buttonHoveringColour);
+}
+
+.profileHeaderContainer .userDetailsContainer{
+    display: flex;
+    flex-direction: column;
+    padding: 0 var(--spacing);
+}
+.profileHeaderContainer .userDetailsContainer .UserName{
+    font-family: Bradley Hand;
+}
+.communityContainer .value{
+    font-weight: bold;   
+    margin-right: 5px;
+}
+
+.communityContainer .span:not(.value) {
+    color: var(--borderGrey);
+}
+
+.communityContainer .a {
+    margin-right: 15px;
+}
+
+.communityContainer a:hover {
+    border-bottom: 1px solid #000;
+}
+
+.tabsContainer{
+    display: flex;
+    border-bottom: 1px solid var(--borderGrey);
+    flex-shrink: 0;
+}
+.tab{
+    flex: 1;
+    height: 35px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--buttonHoveringColour);
+    font-weight: bold;
+}
+.tab.active {
+    color: var(--Crown);
+    border-bottom: 2px solid var(--Crown);
+}
+
+.tab:hover {
+    color: var(--Crown);
+    background-color: var(--Crown_Background);
+}
+
+.user .userDetailContainer{
+    flex: 1;
+    padding: 0 var(--spacing);
+
+}
+.NullResults{
+    padding: var(--spacing);
+}
+.resultsContainer {
+    display: flex;
+    flex-direction: column;
+    
+}
+.resultsContainer .user {
+    padding : var(--spacing);
+    display: flex;
+    border-bottom: 1px solid var(--borderGrey);
+}
+.user .userDetailsContainer{
+    flex: 1;
+    padding: 0 var(--spacing);
+    font-family: Bradley Hand;
+}
+
+.user .userDetailsContainer .username{
+    color: var(--iMobPurple);
+}
+
+.iMobMemberProfileContainer, .iMobMemberCoverPhotoContainer{
+    position: absolute ;
+    font-size: 45px;
+    color: rgb(0,0,0,0.6);
+    display: none;
+    
+}
+.coverPhotoContainer{
+    display: flex;
+    align-items: center ;
+    justify-content: center ;
+    height: 100%;
+}
+.coverPhotoContainer img{
+    width: 100%;
+    height: 100%;
+}
+.userImageContainer:hover .iMobMemberProfileContainer,
+.coverPhotoSection:hover .iMobMemberCoverPhotoContainer{
+    display: block;
+}
+
+#imagePreview, #coverPreview{
+    width: 100%;
+    display:block;
+    max-width: 100%;
+}
+
+.stopTheCapButton.active{
+    color:rgb(37, 87, 253);
+}
+.capClaim{
+    color: var(--buttonHoveringColour);
+    font-size: 13px;
+}
+.searchBarContainer {
+    position: relative;
+    padding: 10px;
+    font-family: 'Courier New Bold', Courier, monospace
+}
+.searchBarContainer i{
+    position: absolute ;
+    top: 20px;
+    left: 20px;
+}
+.searchBarContainer #searchBox{
+    color: var(--iMobPurple);
+    height: 36px;
+    width: 100%;
+    padding: 4px 15px 5px 40px;
+    background-color: #f1f0f0;
+}
+
+.chatRoomContainer{
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.chatTitleBar{
+    font-family: 'Courier New Bold', Courier, monospace;
+    border-bottom: 1px solid var(--disabledColor);
+    display: flex;
+    align-items: center;
+    min-height: 60px;
+    padding: 10px;
+}
+
+.chatTitleBar label{
+    margin: 0 10px 0 0 ; 
+}
+#userSearchTextBox {
+    border: none;
+    flex: 1;
+    font-weight: 200;
+    min-width: 350px;
+}
+#slideIntoDMButton{
+    border: none;
+    background-color: var(--CommentBlue);
+    color: #fff;
+    padding: 7px 20px;
+    margin: 10px auto;
+    border-radius: 40px;
+}
+#slideIntoDMButton:disabled{
+    background-color: var(--borderGrey);
+    color: var(--disabledColor);
+}
+.availableUser {
+    font-weight: 300;
+    background-color: var(--iMobPurple);
+    color: #00ff05;
+    padding: 5px;
+    margin: 5px 5px 0 0;
+    display: inline-block;
+    border-radius: 30px
+
+}
+.resultListItem {
+    padding: 7px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    border-bottom: 1px solid var(--borderGrey);
+}
+.resultListItem:hover {
+    background-color: #f2f2f2;
+}
+
+.resultsDetailsContainer {
+    display: flex;
+    flex-direction: column ;
+    flex:1;
+}
+
+
+.resultsDetailsContainer .heading{
+    font-weight: 500;
+}
+.resultsDetailsContainer .subText{
+    color: var(--iMobPurple);
+    font-size: 13px;
+}
+
+.resultListItem img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+
+.resultsImageContainer  {
+    height: 40px;
+    width: 40px;
+    position: relative ;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    
+}
+.squadImage img{
+    height: 65%;
+    width: 65%;
+    position: absolute ;
+    bottom: 0;
+    margin: 0;
+    border: 2px solid;
+}
+.squadImage img:first-of-type{
+    top: 0;
+    right: 0;
+}
+
+.ellipsis{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.DMPageContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    flex: 1;flex-basis: 0;
+}
+.chartTitleContainer{
+    border-bottom:  1px solid var(--borderGrey);
+    display: flex;
+    align-items: center;
+    padding: var(--spacing);
+    flex-basis: 0;
+}
+#DMName{
+   width: 100%;
+    border: 1px solid transparent ;
+    padding: 0 5px;
+}
+
+#DMName:hover{
+    border: 1px solid var(--iMobPurple);   
+}
+
+.chatContainer{
+    
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    overflow-y: hidden;
+}
+
+.chatContainer .footer{
+    display: flex;
+    padding: var(--spacing);
+    flex-shrink: 0px;
+}
+
+
+.chatContainer .footer textarea{
+    flex: 1;
+    background-color: rgba(0,0,0,0.05);
+    border-radius: 19px;
+    padding: 8px 12px;
+    height: 38px;
+    resize: none;
+}
+.chatContainer .footer button{
+    color: var(--Cosign); 
+    background-color: transparent ;
+    font-size: 24px;
+}
+.directMessages{
+    flex: 1;
+    display: flex;
+    flex-direction: column ;
+    overflow-y: auto ;
+    padding: var(--spacing); 
+}
+
+.chatImagesContainer {
+    display:flex;
+    flex-direction: row-reverse ;
+    height: 100%;
+    margin-right: 10px;
+}
+
+.chatImagesContainer img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    margin-left: -6px;
+}
+
+.chatImagesContainer .userCount{
+    height: 40px;
+    width: 40px;
+    background-color: #f1f1f1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center ;
+    justify-content: center ;
+    font-size: 14px;
+    border: 2px solid #fff
+}
+
+
+#chatNameTextbox{
+    width: 100%;
+    
+}
+.directMessages .message{
+    display: flex;
+    padding: 3px;
+    flex: 1;
+    flex-shrink: 0;
+    -webkit-flex: 0;
+}
+.message.mine .messageContainer{
+    display: flex;
+    flex-direction: column;
+    max-width: 55%;
+}
+.message.theirs, .messageContainer{
+    display: flex;
+    flex-direction: column;
+    max-width: 55%;
+     align-items: flex-start; 
+}
+.message.theirs .messageBody{
+    background-color: #f1f0f0;
+    border-radius: 50%;
+    font-size: 19px;
+   
+}
+.message.mine .messageBody{
+    background-color:var(--Cosign) ;
+    padding: 13px 12px;
+    border-radius: 19px;
+    font-size: 15px;
+     border-bottom-right-radius: 2px;
+}
+
+.message.theirs .messageBody{
+    border-radius: 19px;
+    padding: 13px 12px;
+    font-size: 15px;
+     border-bottom-left-radius: 2px;
+}
+
+.directMessages .message.mine{
+   flex-direction: row-reverse 
+} 
+.senderName{
+   color: rgba(0,0,0,0.5);
+}
+
+.message.theirs img{
+    height:100%;
+    border-radius: 50%;
+    width: 24px;
+    margin-right: 10px;
+    background-color: #fff;
+    vertical-align: bottom ;
+}
+
+
+.loadingCarltonContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%
+}
+
+.loadingCarltonContainer img{
+    width: 45%;
+    max-width: 65%;
+}
+.typingDots img{
+    background-color: #f1f0f0;
+    padding: 13px 12px;
+    border-radius: 18px;
+    font-size: 18px;
+    height: 45px;
+    width: 45px;
+}
+.typingDots{
+    padding: var(--spacing);
+    display: none;
+}
+
+.resultListItem.active {
+    background-color: var(--iMobPurple); 
+}
+.resultListItem.active img{
+    height:100%;
+    border-radius: 50%;
+    width: 24px;
+    margin-right: 10px;
+    background-color: #fff;
+    vertical-align: bottom ;
+}
+.resultListItem.notification.active * {
+    pointer-events: none;
+}
+#notificationBadge, #DMsBadge{
+    background-color: red;
+    height: 26px;
+    padding: 1px 5px;
+    border-radius: 100%;
+    position: absolute ;
+    top: 0;
+    right: 0;
+    color: #fff;
+    font-size: 17px;
+    font-family: 'Courier New Bold', Courier, monospace;
+    justify-content: center;
+    align-content: center ;
+    visibility: hidden;
+    
+}
+
+#notificationBadge.active, #DMsBadge.active{
+  visibility: visible;   
+}
+#nottieList{
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    width: 375px;
+    background-color: #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+#nottieList .active{
+    background-color: #f1f0f0;
+}

@@ -1,0 +1,99 @@
+Stuff from original routes.js folder [0
+
+const displayContent = (req, res) =>{
+
+    const url = req.url;
+    const method = req.method;// This will either be a GET or POST request
+    //meaning I am either trying to get information from the site or send data to 
+    //the site.
+    if(url == "/profile"){
+        res.setHeader('Content-type', 'text/html')
+        res.write('<p>This is the profile page.<p>');
+        //res.end(); - If we left it like this then the code would execute this and execute the other same snippet outside the if statement
+        return res.end();// This is needed to avoid concantenation errors with the same code outside
+    }
+    // so what is going to happen is if i type "localhost:3001/profile" in the 
+    //into the web browser, I will see the 'This is the profile page" written on the html page.
+
+    //Now i can have multiple url pages to display that and how I can orient it
+    //is by having multiple if or else if statments to dictate which one goes where
+    // so if i wanted the "cheeseburgers" on my default i would just do this:
+    else if(url == "/"){
+        res.setHeader('Content-type', 'text/html')
+        res.write('<p>Cheeseburgers<p>');
+        return res.end();
+    }
+
+    else if(url == "/settings"){
+        res.setHeader('Content-type', 'text/html')
+        res.write('<h1>Settings<h1><form action="/setttings" method="POST"><input type="text">Hit Me<button type="submit"></button><form>');
+        //The Idea behind this parameters soufle above is to be able to write something in a type parameter opening within the 
+        //"localhost:3001/settings" page that will be delivered(method = POST) to the settings page (action='/settings')
+        //i will still be on the settings page because I havent set it to go some place else.
+
+        return res.end();
+    }
+
+
+    else if(url == "/settings" && method == "POST"){
+        res.setHeader('Content-type', 'text/html')
+        res.write('<h1>Form was submitted<h1>');
+        return res.end();
+    }
+    //The lets me know, while still being on the settings page, that my form was 
+    //correctly submitted and went through properly
+    //the "localhost:3001" page would show 'Form was submitted'. Now if I hit the refresh button on my browser i,e ⟳
+    //then i get the "confirm form resubmission - Continue or Cancel" ..hitting continue will resubmit that same data again
+    //So if i am trying to get back to the settings page i have to click on the brower url, which would have "localhost:3001/settings" and hit enter key
+    //this sends me back to the settings page where i can write some more stuff
+    
+    res.setHeader('Content-type', 'text/html')
+    res.write('<p>Page Not found.<p>');
+    res.end();
+    
+
+    //The purpose of this is to show how ultiple pages can be supported using the 
+    //res parameter function.
+
+}
+
+module.exports = displayContent;//notcie how this doesnt have 
+//any parenthesis so we arent calling the function. we are only saying the name of the function
+// how this will work is that on the "iMob.js" file i will put a
+//displayContent = require('./routes') to as for what the module is exporting from my main page.
+9]
+
+Stuff from original iMob.js file
+[0
+const http = require('http');
+const { nextTick } = require('process');
+const { serialize } = require('v8');
+const displayContent = require('./routes');
+
+
+server.listen(port);
+9].
+
+
+
+Making money as a middelman on internet ads. then I send this to a business owner.
+basically facebooks ads are something O can use to send leads to businesses.
+People spend their entire time on their phones and stating at home so that i can put myself in a great situation.
+
+
+What is the skeptical Tai lopez hype.
+what woukd you do with an additonal $5k eveery month - invest invest invest
+Step1 -  Use an automated machine to locate and attract high paying 
+
+How to make the face ads manager...dont worry about competition.
+*HIGH TICKET LEADS
+- Real estate industry
+- Landscapers, Solar Panel Installers
+- Coaches/ Personal trainers
+
+There is a book for the top 25 niche business he talks
+how much should I be charging a month: $1200
+
+Ideal Automated machine software
+"productized" income...there is no limit to this kind of work
+if you can solve a premium problem = you can get a premium salary

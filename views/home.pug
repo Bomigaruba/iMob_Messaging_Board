@@ -1,0 +1,10 @@
+extends layouts/base-layout.pug 
+
+block eyeCandy
+    +createPostForm(userLoggedIn)
+    .postsContainer
+
+    +modalsFunctionalty(userLoggedIn)
+
+block scripts 
+    script(src="/Frontend/iMobAppHome.js") 

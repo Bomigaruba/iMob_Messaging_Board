@@ -1,0 +1,68 @@
+extends layouts/base-layout.pug 
+
+block eyeCandy
+    if !iMobMemberProfile
+        span.pageNotFoundErrorMessage lol, iMobMember Not Found
+        
+
+    else
+        script.
+            var iMobMemberProfileId = '!{iMobMemberProfile._id}';
+            var selectedTab = '!{selectedTab}';
+        
+        - cFc =  iMobMemberProfile.linked.length 
+        - lCC =  iMobMemberProfile.confirmedLinked.length
+
+        .profileHeaderContainer
+            .coverPhotoSection 
+                .coverPhotoContainer
+                    if iMobMemberProfile.BackdropPic
+                        img(src=iMobMemberProfile.BackdropPic, alt="WHO?")
+
+                    if iMobMemberProfile._id == userLoggedIn._id   
+                        button.iMobMemberCoverPhotoContainer(data-toggle="modal", data-target="#coverImageUploadModal")
+                            i.fas.fa-camera           
+
+                .userImageContainer 
+                    img(src=iMobMemberProfile.MugShotPic, alt="Mug Shot")
+
+                    if iMobMemberProfile._id == userLoggedIn._id   
+                        button.iMobMemberProfileContainer(data-toggle="modal", data-target="#imageUploadModal")
+                            i.fas.fa-camera
+            .profileButtonsContainer
+                if iMobMemberProfile._id != userLoggedIn._id    
+                    a.mobProfileButton(href=`/messages/${iMobMemberProfile._id}`)
+                        i.fa-solid.fa-comment-dots 
+
+                    - var PiD = iMobMemberProfile._id.toString();
+                    - if(userLoggedIn.linked && userLoggedIn.linked.includes(PiD))
+                        +joinCommunityButton(iMobMemberProfile, true)
+                    - else        
+                        +joinCommunityButton(iMobMemberProfile, false)
+                 
+            .userDetailsContainer
+                span.displayName #{iMobMemberProfile.FirstName} #{iMobMemberProfile.LastName}
+                span.UserName @#{iMobMemberProfile.UserName}
+                span.description #{iMobMemberProfile.description}
+               
+                .communityContainer
+                    a(href=`/iMobProfilePage/${iMobMemberProfile.UserName}/linked`)
+                        span.value #{cFc}
+                        span Personal Feed 
+                    a(href=`/iMobProfilePage/${iMobMemberProfile.UserName}/confirmedLinked`)
+                        span#linkedCommunityCount.value #{lCC}
+                        span Communnity 
+
+        .tabsContainer 
+            +createTab("iMobPosts", `/iMobProfilePage/${iMobMemberProfile.UserName}`, selectedTab != "Comments")
+            +createTab("Comments", `/iMobProfilePage/${iMobMemberProfile.UserName}/Comments`, selectedTab == "Comments")          
+
+        .capClaimContainer
+        .postsContainer
+
+        +modalsFunctionalty(userLoggedIn)
+        +generateImageUploadModal()
+        +generateCoverImageUploadModal()
+
+block scripts 
+    script(src="/Frontend/iMobProfilePage.js") 

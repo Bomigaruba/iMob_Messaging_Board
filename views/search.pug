@@ -1,0 +1,18 @@
+extends layouts/base-layout.pug 
+
+block eyeCandy
+
+
+        .searchBarContainer
+            i.fa-solid.fa-magnifying-glass
+            input#searchBox(type="text", name="searchBox", data-search=selectedTab, placeholder="Spy on iMob users :) or pull up old post receipts")
+        .tabsContainer 
+            +createTab("iMobPosts", `/Search/postsRoutesPath`, selectedTab != "usersRoutesPath")
+            +createTab("Users", `/Search/usersRoutesPath/`, selectedTab == "usersRoutesPath")
+
+        .resultsContainer
+
+        +modalsFunctionalty(userLoggedIn)
+
+block scripts 
+    script(src="/Frontend/Search.js") 

@@ -1,0 +1,1 @@
+This is based off the multer dependency and it handles image uploading through ajax requests
