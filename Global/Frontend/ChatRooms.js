@@ -8,7 +8,6 @@ $(document).ready(  () => {
         else{
             outputChatList(ChatLog, $(".resultsContainer"));
         }
-
     })
 })
 function outputChatList(ChatLog, container){
