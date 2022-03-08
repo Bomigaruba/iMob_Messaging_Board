@@ -1,6 +1,6 @@
 const express = require('express');//Main Dependecy for code
 const iMobApp = express();//Initilize it
-const port = 3005;//port number app will run on
+const port = process.env.PORT || 3005;//port number app will run on
 const middleware = require("./Middleware_Check");//This is for checking that the user is logged in or not
 const path = require("path");//this tells the express instance to listen on our port for anyone joining
 const bodyParser = require("body-parser");//body-parser dependency in use
