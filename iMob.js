@@ -7,7 +7,7 @@ const bodyParser = require("body-parser");//body-parser dependency in use
 const mongoose = require("./iMobDatabase");//initialize the mongoose dependency through iMobDatabse.js file
 //const Trivia = require("./Didyouknow");//
 const session = require("express-session");
-const server = iMobApp.listen(port, () => console.log('Server is listening on port ' + PORT))
+const server = iMobApp.listen(PORT, () => console.log('Server is listening on port ' + PORT))
 const io = require("socket.io")(server, {pingTimeout: 60000});
 
 //Creating a USER SCEHEMA, this is essentially a model where i can declare the fields for my collection
