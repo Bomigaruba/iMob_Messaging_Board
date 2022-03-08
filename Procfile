@@ -1,1 +1,1 @@
-web: node iMob.js
+web: npm start iMob.js
