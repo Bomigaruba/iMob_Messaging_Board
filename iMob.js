@@ -4,11 +4,12 @@ const PORT = process.env.PORT || 3005;//port number app will run on
 const middleware = require("./Middleware_Check");//This is for checking that the user is logged in or not
 const path = require("path");//this tells the express instance to listen on our port for anyone joining
 const bodyParser = require("body-parser");//body-parser dependency in use
-const mongoose = require("./iMobDatabase");//initialize the mongoose dependency through iMobDatabse.js file
+const mongoose = require("mongoose");//initialize the mongoose dependency through iMobDatabse.js file
 //const Trivia = require("./Didyouknow");//
 const session = require("express-session");
 const server = iMobApp.listen(PORT, () => console.log(` App running on https://localhost:${PORT}`));
 const io = require("socket.io")(server, {pingTimeout: 60000});
+const MONGODB_URI = 'mongodb+srv://Garubabomi:Gb2050!!@imobapp.lwcxb.mongodb.net/iMobDB?retryWrites=true&w=majority';
 
 //Creating a USER SCEHEMA, this is essentially a model where i can declare the fields for my collection
 //which my data types will have. So when I insert data into this, it will look at the types i have decleared before inserting
@@ -18,10 +19,15 @@ ABOVE IS WHERE THE DEPENDECIES DECLARATIONS & INITIALIZATIONS ARE SET
 */
 
 //Mongodb Initialization settings//
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/iMob',{
+//|| 'mongodb://localhost/iMobApp'
+mongoose.connect(MONGODB_URI || 'mongodb://localhost/iMobApp', {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
 });
+mongoose.connection.on('connected',() => {
+    console.log('Database Connection Made is Made');
+});
+
 
 //console.log(Trivia.facts)//
 
@@ -29,7 +35,7 @@ iMobApp.set("view engine", "pug");//Template engines, this has placeholders for 
 iMobApp.set("views", "views");
 
 //BODY-PARSER DEPENDENCY
-iMobApp.use(express.json());
+// iMobApp.use(express.json());
 iMobApp.use(express.urlencoded({extended: false}));
 iMobApp.use(bodyParser.urlencoded({extended: false}));// What this does? this seets the body to only contain key value pairs of strings or arrays. if truethen any datat type would be accepts 
 
@@ -114,3 +120,7 @@ io.on("connection", (socket) => {
     });
 
 });
+
+if(process.env.NODE_ENV === 'production'){
+    
+}

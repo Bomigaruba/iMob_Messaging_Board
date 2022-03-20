@@ -11,10 +11,11 @@ class iMobDatabase{
     }
 
     connect(){
-        mongoose.connect("mongodb+srv://Garubabomi:Gb2050!!@imobapp.lwcxb.mongodb.net/iMobDB?retryWrites=true&w=majority")
+        mongoose.connect( process.env.MONGODB_URI || "mongodb+srv://Garubabomi:Gb2050!!@imobapp.lwcxb.mongodb.net/iMobDB?retryWrites=true&w=majority")
         //this connect function allows callbacks to it. if it runs and its succeful it goes to the then() stage and if it fails it
         //goes to the catch() block. What's in the connect fuction is the link to my MongoDB database objects for users.
         .then( ()=>{ //anonymous function
+                
                 console.log("Database connection works")
                 //This will also give database deprecation
                 //information if ithe is experiencing weirdness the connection bandwidth
