@@ -7,7 +7,7 @@ const bodyParser = require("body-parser");//body-parser dependency in use
 const mongoose = require("./iMobDatabase");//initialize the mongoose dependency through iMobDatabse.js file
 //const Trivia = require("./Didyouknow");//
 const session = require("express-session");
-const server = iMobApp.listen(PORT, () => console.log('Server is listening on port ' + PORT))
+const server = iMobApp.listen(PORT, () => console.log(` App running on https://localhost:${PORT}`));
 const io = require("socket.io")(server, {pingTimeout: 60000});
 
 //Creating a USER SCEHEMA, this is essentially a model where i can declare the fields for my collection
@@ -16,13 +16,22 @@ const io = require("socket.io")(server, {pingTimeout: 60000});
 /*
 ABOVE IS WHERE THE DEPENDECIES DECLARATIONS & INITIALIZATIONS ARE SET
 */
+
+//Mongodb Initialization settings//
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/iMob',{
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
+
 //console.log(Trivia.facts)//
 
 iMobApp.set("view engine", "pug");//Template engines, this has placeholders for our data on web app, like pug
 iMobApp.set("views", "views");
 
 //BODY-PARSER DEPENDENCY
-iMobApp.use(bodyParser.urlencoded({extended: false}))// What this does? this seets the body to only contain key value pairs of strings or arrays. if truethen any datat type would be accepts 
+iMobApp.use(express.json());
+iMobApp.use(express.urlencoded({extended: false}));
+iMobApp.use(bodyParser.urlencoded({extended: false}));// What this does? this seets the body to only contain key value pairs of strings or arrays. if truethen any datat type would be accepts 
 
 iMobApp.use(express.static(path.join(__dirname, "Global")));//gives the absolute path to
 //Global folder. The code snippet indicates that anythin within this folder is to be served
@@ -36,7 +45,7 @@ iMobApp.use(session({
     secret: "Omaewamo-Shinderu",//It's an inside joke, you wouldn't get it
     resave: true,//forcing the session to be saved to the storage database even if nothing was done during that session. i.e the user logged in and immediately logged out
     saveUninitialized: false //
-}))
+}));
 //ROUTES SUB SET
 const loginRoutePath = require('./routes/loginRoutesPath');
 const logoutRoute = require('./routes/logout');
@@ -57,7 +66,7 @@ const messagesApiRoutePath = require('./routes/Api/messagesRoutesPath');
 
 
 iMobApp.use("/login",loginRoutePath);
-iMobApp.use("/logout", logoutRoute)
+iMobApp.use("/logout", logoutRoute);
 iMobApp.use("/register", registerRoutePath);
 iMobApp.use("/iMobPostPage", middleware.requireLogin, pagesRoutePath);//just to ensure I can catch illegal page hopping :)
 iMobApp.use("/iMobProfilePage", middleware.requireLogin, mobProfileRoutePath);
@@ -83,7 +92,7 @@ iMobApp.get("/", middleware.requireLogin, (req, res, next) =>{
         //as a variable to assign it to a display iconn on the client side. This is specifically for the base-layout.pug
     }
     res.status(200).render("home", payload);//this makes the Title of my web page more dynamic
-})
+});
 
 io.on("connection", (socket) => {
     socket.on("setup", userData => {
@@ -104,4 +113,4 @@ io.on("connection", (socket) => {
         })
     });
 
-})
+});
