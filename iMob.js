@@ -10,6 +10,7 @@ const session = require("express-session");
 const server = iMobApp.listen(PORT, () => console.log(` App running on https://localhost:${PORT}`));
 const io = require("socket.io")(server, {pingTimeout: 60000});
 const MONGODB_URI = 'mongodb+srv://Garubabomi:Gb2050!!@imobapp.lwcxb.mongodb.net/iMobDB?retryWrites=true&w=majority';
+//Name work
 
 //Creating a USER SCEHEMA, this is essentially a model where i can declare the fields for my collection
 //which my data types will have. So when I insert data into this, it will look at the types i have decleared before inserting
