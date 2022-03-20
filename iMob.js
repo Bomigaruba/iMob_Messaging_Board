@@ -1,13 +1,13 @@
 const express = require('express');//Main Dependecy for code
 const iMobApp = express();//Initilize it
-const port = process.env.PORT || 3005;//port number app will run on
+const PORT = process.env.PORT || 3005;//port number app will run on
 const middleware = require("./Middleware_Check");//This is for checking that the user is logged in or not
 const path = require("path");//this tells the express instance to listen on our port for anyone joining
 const bodyParser = require("body-parser");//body-parser dependency in use
 const mongoose = require("./iMobDatabase");//initialize the mongoose dependency through iMobDatabse.js file
 //const Trivia = require("./Didyouknow");//
 const session = require("express-session");
-const server = iMobApp.listen(port, () => console.log('Server is listening on port ' + port))
+const server = iMobApp.listen(PORT, () => console.log('Server is listening on port ' + PORT))
 const io = require("socket.io")(server, {pingTimeout: 60000});
 
 //Creating a USER SCEHEMA, this is essentially a model where i can declare the fields for my collection
