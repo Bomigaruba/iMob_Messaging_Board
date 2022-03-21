@@ -36,7 +36,7 @@ iMobApp.set("view engine", "pug");//Template engines, this has placeholders for 
 iMobApp.set("views", "views");
 
 //BODY-PARSER DEPENDENCY
-// iMobApp.use(express.json());
+iMobApp.use(express.json());
 iMobApp.use(express.urlencoded({extended: false}));
 iMobApp.use(bodyParser.urlencoded({extended: false}));// What this does? this seets the body to only contain key value pairs of strings or arrays. if truethen any datat type would be accepts 
 
