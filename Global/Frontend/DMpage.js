@@ -10,7 +10,7 @@ $(document).ready(() => {
         $("#DMName").text(getDMName(data));
     })
 
-    $.get(`/Api/DMs/Messages/${DMid}`, (data) => {
+    $.get(`/Api/DMs/${DMid}/Messages`, (data) => {
 
         $(document).ready(() => {
             $(".loadingCarltonContainer").remove();
