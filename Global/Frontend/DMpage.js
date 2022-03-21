@@ -11,20 +11,24 @@ $(document).ready(() => {
     })
 
     $.get(`/Api/DMs/${DMid}/Messages`, (data) => {
-        $(".loadingCarltonContainer").remove();
-        $(".chatContainer").css("visibility", "visible");
-        var messages = [];
-        var lastSenderId = "";
-      
-        data.forEach((message, index) => {
-            var html = createMessageHtml(message, data[index + 1], lastSenderId);
-            messages.push(html);
-            lastSenderId = message.sender._id;
+
+        $(document).ready(() => {
+            $(".loadingCarltonContainer").remove();
+            $(".chatContainer").css("visibility", "visible");
+            var messages = [];
+            var lastSenderId = "";
+          
+            data.forEach((message, index) => {
+                var html = createMessageHtml(message, data[index + 1], lastSenderId);
+                messages.push(html);
+                lastSenderId = message.sender._id;
+            });
+            var messageshtml = messages.join("");
+            addMessagesHtmlToPage(messageshtml);
+            scrollToBottom(false);
+            markAllMessagesAsRead();
         });
-        var messageshtml = messages.join("");
-        addMessagesHtmlToPage(messageshtml);
-        scrollToBottom(false);
-        markAllMessagesAsRead();
+
     })  
 })
 
