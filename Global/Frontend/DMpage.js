@@ -7,10 +7,10 @@ $(document).ready(() => {
     socket.on("stop typing", () => $(".typingDots").hide());
 
     $.get(`/Api/DMs/${DMid}`, (data) => {
-        $("#DMName").text(getDMName(data))
+        $("#DMName").text(getDMName(data));
     })
 
-    $.get(`/Api/DMs/${DMid}/Messages`, (data) => {
+    $.get(`/Api/DMs/Messages/${DMid}`, (data) => {
 
         $(document).ready(() => {
             $(".loadingCarltonContainer").remove();
