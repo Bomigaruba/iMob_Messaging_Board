@@ -13,7 +13,7 @@ $(document).ready(() => {
     $.get(`/Api/DMs/${DMid}/Messages`, (data) => {
 
         $(document).ready(() => {
-            $(".loadingCarltonContainer").remove();
+            $(".loadingCarltonContainer").css("visibility", "hidden");
             $(".chatContainer").css("visibility", "visible");
             var messages = [];
             var lastSenderId = "";
