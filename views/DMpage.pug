@@ -13,9 +13,9 @@ block eyeCandy
                 span#DMName(data-toggle="modal", data-target="#changeChatNameModal")
             
             .mainContentContainer
-                .loadingCarltonContainer(style="visibility: visible")
+                .loadingCarltonContainer()
                     img(src="/images/Loading.Gif", alt="loading carleton gif", style="visibility: visible")
-                .chatContainer(style="visibility: hidden", data-room=DM._id)
+                .chatContainer(data-room=DM._id)
                     ul.directMessages
                     .typingDots  
                         img(src="/images/typing.Gif", alt="dots")
