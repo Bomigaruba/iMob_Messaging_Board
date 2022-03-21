@@ -15,7 +15,7 @@ $("#postTextarea, #commentTextarea").keyup(event => {
     var modalOrNot = textbox.parents(".modal").length == 1;
  
     var postButton = modalOrNot ? $("#submitCommentButton") : $("#submitPostButton");// comments section or new main page post
-    if(postButton.lenght == 0){ //To ensure that it's not just random spaces being sent
+    if(postButton.length == 0){ //To ensure that it's not just random spaces being sent
         return alert ("Internal Error with Submit Button");
     }
     if(field == "") { 
@@ -598,14 +598,14 @@ function showcasePostsInCommentThread(feed, container){
     container.html(""); //clears the contents of the this container passed in so that it repopulate with updated items
 
     if(feed.commentOn !== undefined && feed.commentOn._id !== undefined){// if there is already a pre existing message thread
-        var html = formulatePostHtml(feed.commentOn)
+        var html = formulatePostHtml(feed.commentOn);
         container.append(html);
     }
     var clickedOnPosthtml = formulatePostHtml(feed.feedData, true)
     container.append(clickedOnPosthtml);//suppose there is a specific comment the user clicked on within the thread, this handles that
 
     feed.messageThread.forEach(feedData => {
-        var html = formulatePostHtml(feedData)
+        var html = formulatePostHtml(feedData);
         container.append(html);
     });
 }
@@ -741,7 +741,7 @@ function refreshMessagesBadge(){
             $("#DMsBadge").text(unreadBlocks).addClass("active");
         }
         else{
-            $("#DMsBadge").text(unreadBlocks).removeClass("actsive");
+            $("#DMsBadge").text(unreadBlocks).removeClass("active");
         }
     })
 }
@@ -753,7 +753,7 @@ function refreshNottiesBadge(){
             $("#notificationBadge").text(unreadBlocks).addClass("active");
         }
         else{
-            $("#notificationBadge").text(unreadBlocks).removeClass("actsive");
+            $("#notificationBadge").text(unreadBlocks).removeClass("active");
         }
     })
 }
