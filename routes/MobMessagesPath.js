@@ -56,7 +56,7 @@ router.get("/:DMid", async (req, res, next) => {
         payload.DM = DM;
     }
 
-    res.status(200).render("DMPage", payload);
+    res.status(200).render("DMpage", payload);
 })
 
 
