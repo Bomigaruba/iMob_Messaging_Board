@@ -17,7 +17,7 @@ iMobNotificationSchema.statics.insertNotification = async (userTo, userFrom, not
         entityId: entityId
     };
     await  notify.deleteOne(information).catch(error => console.log(error));
-    return Notify.create(information).catch(error => console.log(error));
+    return notify.create(information).catch(error => console.log(error));
 }
 
 var notify  =  mongoose.model('Notify', iMobNotificationSchema);
