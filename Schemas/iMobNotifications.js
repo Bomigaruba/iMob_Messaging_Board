@@ -9,14 +9,14 @@ const iMobNotificationSchema = new schema({//this is how we can set the fields f
     entityId: schema.Types.ObjectId
 }, {timestamps: true});
 
-iMobNotificationSchema.statics.insertNotification = async (UserTo, UserFrom, NotiType, entityId) => {
+iMobNotificationSchema.statics.insertNotification = async (userTo, userFrom, notiType, entityId) => {
     var information ={
-        UserTo: UserTo,
-        UserFrom: UserFrom,
-        NotiType: NotiType,
+        userTo: userTo,
+        userFrom: userFrom,
+        notiType: notiType,
         entityId: entityId
     };
-    await  Notify.deleteOne(information).catch(error => console.log(error));
+    await  notify.deleteOne(information).catch(error => console.log(error));
     return Notify.create(information).catch(error => console.log(error));
 }
 
