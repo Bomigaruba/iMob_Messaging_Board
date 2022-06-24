@@ -1,16 +1,16 @@
 //This is the equvalent of chatspage.
-var typing= false;
+var typing = false;
 var lastTypingTime;
 $(document).ready(() => {
-    socket.emit("join room", DMid);
+    socket.emit("join room", dmid);
     socket.on("typing", () => $(".typingDots").show());
     socket.on("stop typing", () => $(".typingDots").hide());
 
-    $.get(`/Api/DMs/${DMid}`, (data) => {
+    $.get(`/Api/DMs/${dmid}`, (data) => {
         $("#DMName").text(getDMName(data));
     })
 
-    $.get(`/Api/DMs/${DMid}/Messages`, (data) => {
+    $.get(`/Api/DMs/${dmid}/Messages`, (data) => {
 
         $(document).ready(() => {
             $(".loadingCarltonContainer").css("visibility", "hidden");
@@ -37,7 +37,7 @@ $("#changeChatNameButton").click(() => {
 
     // console.log(name);
     $.ajax({
-       url: "/Api/DMs/" + DMid,
+       url: "/Api/DMs/" + dmid,
        type: "PUT",
        data: {DMName: name},
        success: (data, status, xhr) => {
@@ -67,7 +67,7 @@ function updateTyping(){
         if(!connected){return;}
         if(!typing){
             typing = true;
-            socket.emit("typing", DMid);
+            socket.emit("typing", dmid);
         }
 
         lastTypingTime  = new Date().getTime();
@@ -77,12 +77,12 @@ function updateTyping(){
             var timeNow = new Date().getTime();
             var timeDifference = timeNow = lastTypingTime;
             if(timeDifference>= timerLength && typing){
-                socket.emit("stop typing", DMid);  
+                socket.emit("stop typing", dmid);  
                 typing = false;
             }
         }, timerLength);
 
-    socket.emit("typing", DMid);
+    socket.emit("typing", dmid);
 }
 
 function addMessagesHtmlToPage(html){
@@ -96,13 +96,13 @@ function messageSubmitted(){
     if(content != ""){
         sendMessage(content);
         $(".inputTextBox").val("");
-        socket.emit("stop typing", DMid);  
+        socket.emit("stop typing", dmid);  
         typing = false;        
     }
 }
 
 function sendMessage(content){
-    $.post("/Api/Messages/", {content: content, DMid: DMid}, (data, status, xhr) => {
+    $.post("/Api/Messages/", {content: content, DMid: dmid}, (data, status, xhr) => {
 
         if(xhr.status != 201){
             alert("message failed to send");
@@ -204,7 +204,7 @@ function scrollToBottom(animated){
 
 function markAllMessagesAsRead(){
     $.ajax({
-        url: `/Api/DMs/${DMid}/Messages/markedAsRead`,
+        url: `/Api/DMs/${dmid}/Messages/markedAsRead`,
         type: "PUT",
         success: () => refreshMessagesBadge()
     })
