@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
-const iMobMemberSchema = new Schema({//this is how we can set the fields for the data types we use
+const schema = mongoose.Schema;
+const iMobMemberSchema = new schema({//this is how we can set the fields for the data types we use
     FirstName:{
         type: String,
         required: true,
@@ -14,11 +14,11 @@ const iMobMemberSchema = new Schema({//this is how we can set the fields for the
         trim: true
     },
     cosigns:[{//explanation for this on the iMobPosts.js file
-        type: Schema.Types.ObjectId, 
+        type: schema.Types.ObjectId, 
         ref: 'iMobPosts' //this is to show all the post this particular iMobMember has Liked.
    }],
    crowns:[{//explanation for this on the iMobPosts.js file
-    type: Schema.Types.ObjectId, 
+    type: schema.Types.ObjectId, 
     ref: 'iMobPosts' //this is to show all the post this particular iMobMember has Liked.
    }],
     UserName:{
@@ -30,11 +30,11 @@ const iMobMemberSchema = new Schema({//this is how we can set the fields for the
         unique: true
     },
     linked:[{//all the people who will have content shown on your feed
-        type: Schema.Types.ObjectId, 
+        type: schema.Types.ObjectId, 
         ref: 'MobMember' //this is to show all the post this particular iMobMember have linked up w/ you.
     }],
     confirmedLinked:[{//all the people who will have content shown on your feed
-        type: Schema.Types.ObjectId, 
+        type: schema.Types.ObjectId, 
         ref: 'MobMember' //this is to show all the post this particular iMobMember have linked up w/ you.
     }],
     Email:{
@@ -44,11 +44,11 @@ const iMobMemberSchema = new Schema({//this is how we can set the fields for the
         unique: true
     },
     linked:[{//all the people who will have content shown on your feed
-        type: Schema.Types.ObjectId, 
+        type: schema.Types.ObjectId, 
         ref: 'MobMember' //this is to show all the post this particular iMobMember have linked up w/ you.
     }],
     confirmedLinked:[{//all the people who will have content shown on your feed
-        type: Schema.Types.ObjectId, 
+        type: schema.Types.ObjectId, 
         ref: 'MobMember' //this is to show all the post this particular iMobMember have linked up w/ you.
     }],
     Password:{
@@ -67,11 +67,11 @@ const iMobMemberSchema = new Schema({//this is how we can set the fields for the
     },
 
     cosigns:[{//explanation for this on the iMobPosts.js file
-        type: Schema.Types.ObjectId, 
+        type: schema.Types.ObjectId, 
         ref: 'iMobPosts' //this is to show all the post this particular iMobMember has Liked.
    }],
    crowns:[{//explanation for this on the iMobPosts.js file
-    type: Schema.Types.ObjectId, 
+    type: schema.Types.ObjectId, 
     ref: 'iMobPosts' //this is to show all the post this particular iMobMember has Liked.
    }],
 
@@ -81,6 +81,6 @@ const iMobMemberSchema = new Schema({//this is how we can set the fields for the
     //this is where i can set and see the time when all of my data was added. so on my mongodb page or even my terminal I will see "cretaedAt:2022-02-14"
     //updatesAt: 2022-02-15...
 );
-var MobMember = mongoose.model('MobMember',iMobMemberSchema);//how to export a model so that all
+var mobMember = mongoose.model('MobMember',iMobMemberSchema);//how to export a model so that all
 //connections to this database(mongoose) have access to this schema.
-module.exports = MobMember;
+module.exports = mobMember;
