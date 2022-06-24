@@ -188,13 +188,13 @@ $("#coverPhoto").change(function(){// (event) => was giving me fits so I decided
 })
 
 $("#imageUploadButton").click(() => {
-    var Canvas = croppingAgent.getCroppedCanvas();
+    var canvas = croppingAgent.getCroppedCanvas();
 
-    if(Canvas == null){
+    if(canvas == null){
         alert("That is an illegal image you got there, we dont do that over here")
         return;
     }
-    Canvas.toBlob((blob) => {
+    canvas.toBlob((blob) => {
             var formData  = new FormData();
             formData.append("croppedImage", blob);
             
@@ -211,13 +211,13 @@ $("#imageUploadButton").click(() => {
 })
 
 $("#coverImageUploadButton").click(() => {
-    var Canvas = croppingAgent.getCroppedCanvas();
+    var canvas = croppingAgent.getCroppedCanvas();
 
-    if(Canvas == null){
+    if(canvas == null){
         alert("That is an illegal image you got there, we dont do that over here")
         return;
     }
-    Canvas.toBlob((blob) => {
+    canvas.toBlob((blob) => {
             var formData  = new FormData();
             formData.append("croppedImage", blob);
             
