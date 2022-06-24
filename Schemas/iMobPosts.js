@@ -1,27 +1,27 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
-const iMobPostsSchema = new Schema({//this is how we can set the fields for the data types we use
+const schema = mongoose.Schema;
+const iMobPostsSchema = new schema({//this is how we can set the fields for the data types we use
     content:{
         type: String,
         trim: true
     },
     authoredBy: {
-        type: Schema.Types.ObjectId, //This is something unique to mongoose schema's where i can display the author of an AJAX post request
+        type: schema.Types.ObjectId, //This is something unique to mongoose schema's where i can display the author of an AJAX post request
         ref: 'MobMember' 
     },
     Capping: Boolean,
     cosignFromMembers:[{ //the reason for the "[]" is because this will be an array of user object...i.e how many people cosine what you posted.
-         type: Schema.Types.ObjectId, //This is the exact logic that the authoredBy fields would utilize
+         type: schema.Types.ObjectId, //This is the exact logic that the authoredBy fields would utilize
          ref: 'MobMember' 
     }],
-    cosignData:{ type: Schema.Types.ObjectId,  ref: 'iMobPosts' },
-    commentOn:{ type: Schema.Types.ObjectId,  ref: 'iMobPosts' },
+    cosignData:{ type: schema.Types.ObjectId,  ref: 'iMobPosts' },
+    commentOn:{ type: schema.Types.ObjectId,  ref: 'iMobPosts' },
     comments:[{ 
-        type: Schema.Types.ObjectId, 
+        type: schema.Types.ObjectId, 
         ref: 'MobMember' 
    }],
    crowns:[{ 
-    type: Schema.Types.ObjectId, 
+    type: schema.Types.ObjectId, 
     ref: 'MobMember' 
     }]
 },
