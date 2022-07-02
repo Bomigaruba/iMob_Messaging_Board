@@ -67,7 +67,7 @@ const notificationsRoutes = require('./routes/notificationsRoutesPath');
 
 const postApiRoutePath = require('./routes/Api/postsRoutesPath');
 const usersApiRoutePath = require('./routes/Api/usersRoutesPath');
-const DMsApiRoutePath = require('./routes/Api/DMs');
+const dmsApiRoutePath = require('./routes/Api/DMs');
 const pushNotificationsApiRoutePath = require('./routes/Api/pushNotifications');
 const messagesApiRoutePath = require('./routes/Api/messagesRoutesPath');
 
@@ -84,7 +84,7 @@ iMobApp.use("/Notifications", middleware.requireLogin, notificationsRoutes);
 
 iMobApp.use("/Api/postsRoutesPath", postApiRoutePath);
 iMobApp.use("/Api/usersRoutesPath", usersApiRoutePath);
-iMobApp.use("/Api/DMs", DMsApiRoutePath);
+iMobApp.use("/Api/DMs", dmsApiRoutePath);
 iMobApp.use("/Api/Notifications", pushNotificationsApiRoutePath);
 iMobApp.use("/Api/Messages",  messagesApiRoutePath);
 //now we will see how to render content to web page
