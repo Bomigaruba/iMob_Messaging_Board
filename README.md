@@ -1,6 +1,6 @@
 # iMob_Social_Network_App
 
-Built with [Socket.io](https://socket.io/), [Express.js](https://expressjs.com/), [Tableau](https://www.tableau.com/)<br>
+Built with [Socket.io](https://socket.io/), [Express.js](https://expressjs.com/), [MongDB Clusters](https://www.tableau.com/)<br>
 This is a MERN web application engine hosted on Heroku.<br> A simple social network messaging board taking inspiration from Twitter(now X) and 
 Discord that runs locally on a chosen browser client.
 ![Imob_2](https://github.com/Bomigaruba/iMob_Messaging_Board/assets/56232544/22804898-4419-4d36-9f57-cf73bd41d4bc)
