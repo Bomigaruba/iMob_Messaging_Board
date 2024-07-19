@@ -4,8 +4,10 @@ Built with [Socket.io](https://socket.io/), [Express.js](https://expressjs.com/)
 This is a MERN web application engine hosted on Heroku.<br> A simple social network messaging board taking inspiration from Twitter(now X) and 
 Discord that runs locally on a chosen browser client.
 ![Imob_2](https://github.com/Bomigaruba/iMob_Messaging_Board/assets/56232544/22804898-4419-4d36-9f57-cf73bd41d4bc)
+![Imob 4](https://github.com/user-attachments/assets/f254d68c-4841-41b6-a775-22a367b0ab45)
 Clone repository
-```
+```!
+
 git clone https://github.com/Bomigaruba/iMob_Messaging_Board.gd
 cd iMob_Messaging_Board
 ```
