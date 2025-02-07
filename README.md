@@ -7,7 +7,7 @@ The ideation of this project began as a submission to the MongoDB World Hackatho
 <img align="center" src="https://github.com/Bomigaruba/iMob_Messaging_Board/assets/56232544/22804898-4419-4d36-9f57-cf73bd41d4bc" /><br>
 <img align="center" src="https://github.com/Bomigaruba/iMob_Messaging_Board/assets/56232544/1d853041-c6a5-4b56-8744-b62fd20d64ad"/><br>
 
-<br><br>The platform is designed for the users to be able to fact-check (Call Cap) posts and articles shared by other users. Improvements and customations were made to take this simple social network app from a crude messaging API token board to a product with multimedia sharing functionality akin to Twitter(now X) and Discord that runs seamlessy on various browser engines.
+<br><br>The platform is designed for the users to be able to fact-check (Call Cap) posts and articles shared by other users. Improvements and customations were made to take this simple social network app from a crude messaging API token board to a product with multimedia sharing functionality akin to Twitter(now X) and Discord that runs seamlessly on various browser engines.
 
 ## Getting Started
 
